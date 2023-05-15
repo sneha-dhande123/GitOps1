@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: api
-          image: 964215206189.dkr.ecr.ap-south-1.amazonaws.com/myrepo:master-980bac0d84775f41173d418958072ce4c067fc90
+          image: 964215206189.dkr.ecr.ap-south-1.amazonaws.com/myrepo:master-e19b10d9d6d190a5c734a510b2400f307853ce7b
           ports:
             - containerPort: 3000
