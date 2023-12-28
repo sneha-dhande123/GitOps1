@@ -26,4 +26,4 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: 'GitHub Actions Build Notification'
           body: 'The GitHub Actions workflow has encountered an issue. Please check the build logs.'
-          to: 'sneha789dhande@gmail.com
+          to: 'sneha789dhande@gmail.com'
