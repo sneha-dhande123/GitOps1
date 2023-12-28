@@ -11,7 +11,13 @@ jobs:
   docker_build_and_push:
     runs-on: ubuntu-latest
     steps:
-      # Add steps for building and pushing Docker images here
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Pull Nginx Image
+        run: docker pull nginx:latest
+
+      # Add other steps for building and pushing Docker images here
 
   email_notification:
     runs-on: ubuntu-latest
@@ -19,7 +25,7 @@ jobs:
     steps:
       - name: Set Workflow Status
         id: set_status
-        run: echo "Status: ${{ job.status }}" >> $GITHUB_ENV
+        run: echo "set_status=completed" >> $GITHUB_ENV
 
       - name: Send Email Notification
         uses: dawidd6/action-send-mail@v2
