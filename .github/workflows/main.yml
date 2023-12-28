@@ -1,17 +1,21 @@
-name: Build and push Automation image to ACR
+name: demo email notification
 
 on:
   workflow_dispatch:
 
 jobs: 
-  docker_build_and_push:
+  demo-email-notification:
     runs-on: ubuntu-latest
     steps:
-      # Add steps for building and pushing Docker images here
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Fetch Nginx Image
+        run: docker pull nginx
 
   email_notification:
     runs-on: ubuntu-latest
-    needs: docker_build_and_push
+    needs: demo-email-notification
     steps:
       - name: Send Email Notification
         uses: dawidd6/action-send-mail@v2
@@ -20,8 +24,8 @@ jobs:
           server_port: ${{ secrets.PORT_NUMBER }}
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          from: 'sneha789dhande@gmail.com'  # Replace with the sender's email address
+          from: 'sneha.dhande@amla.io'  # Replace with the sender's email address
           subject: 'GitHub Actions Build Notification'
           body: 'The GitHub Actions workflow has encountered an issue. Please check the build logs.'
-          to: 'sneha789dhande@gmail.com'
+          to: 'sneha.dhande@amla.io'
           content_type: text/plain
