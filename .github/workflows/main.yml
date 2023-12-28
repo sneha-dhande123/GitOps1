@@ -20,7 +20,7 @@ jobs:
           server_port: ${{ secrets.PORT_NUMBER }}
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          from: 'your-email@example.com'  # Replace with the sender's email address
+          from: 'sneha789dhande@gmail.com'  # Replace with the sender's email address
           subject: 'GitHub Actions Build Notification'
           body: 'The GitHub Actions workflow has encountered an issue. Please check the build logs.'
           to: 'sneha789dhande@gmail.com'
