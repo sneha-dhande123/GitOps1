@@ -11,7 +11,11 @@ jobs:
   docker_build_and_push:
     runs-on: ubuntu-latest
     steps:
-      # Add steps for building and pushing Docker images here
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Print Message
+        run: echo "This is a placeholder step. Replace it with your build and push steps."
 
   email_notification:
     runs-on: ubuntu-latest
