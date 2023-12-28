@@ -1,21 +1,13 @@
 name: Build and push Automation image to ACR
 
 on:
-  #release:
-  #    types: [published]
-  #schedule:
-    #- cron: '00 18 * * *' # Triggers the workflow every day at 5:00 and 18:00 UTC
   workflow_dispatch:
 
 jobs: 
   docker_build_and_push:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
-      - name: Print Message
-        run: echo "This is a placeholder step. Replace it with your build and push steps."
+      # Add steps for building and pushing Docker images here
 
   email_notification:
     runs-on: ubuntu-latest
@@ -25,9 +17,10 @@ jobs:
         uses: dawidd6/action-send-mail@v2
         with:
           server_address: ${{ secrets.MAIL_SERVER }}
-          server_port: ${{ secrets.PORT_NUMBER }}
+          server_port: ${{ secrets.MAIL_PORT }}
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
+          from: 'your-email@example.com'
           subject: 'GitHub Actions Build Notification'
           body: 'The GitHub Actions workflow has encountered an issue. Please check the build logs.'
           to: 'sneha789dhande@gmail.com'
