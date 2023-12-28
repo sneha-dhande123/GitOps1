@@ -1,0 +1,35 @@
+name: Build and push Automation image to ACR
+
+on:
+  #release:
+  #    types: [published]
+  #schedule:
+    #- cron: '00 18 * * *' # Triggers the workflow every day at 5:00 and 18:00 UTC
+  workflow_dispatch:
+
+jobs: 
+  docker_build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      # Add steps for building and pushing Docker images here
+
+  email_notification:
+    runs-on: ubuntu-latest
+    needs: [docker_build_and_push]
+    steps:
+      - name: Set Workflow Status
+        id: set_status
+        run: echo "Status: ${{ job.status }}" >> $GITHUB_ENV
+
+      - name: Send Email Notification
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: ${{ secrets.MAIL_SERVER }}
+          server_port: ${{ secrets.MAIL_PORT }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: 'GitHub Actions Build Notification'
+          body: |
+            The GitHub Actions workflow has completed with status: ${{ env.set_status }}
+            Workflow URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          to: 'sneha.dhande@amla.io'
