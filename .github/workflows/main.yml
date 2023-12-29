@@ -24,7 +24,7 @@ jobs:
           server_port: ${{ secrets.PORT_NUMBER }}
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          from: 'noreply-sendgrid@znode.com'  # Replace with the sender's email address
+          from: 'noreply-sendgrid@znode.com'
           subject: 'GitHub Actions Build Notification'
           body: 'The GitHub Actions workflow has encountered an issue. Please check the build logs.'
           to: 'sneha.dhande@amla.io'
