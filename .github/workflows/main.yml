@@ -26,6 +26,7 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           from: 'noreply-sendgrid@znode.com'
           subject: 'GitHub Actions Build Notification'
-          body: 'The GitHub Actions workflow has encountered an issue. Please check the build logs.'
+          body: |
+            The GitHub Actions workflow has completed with status: ${{ env.set_status }}
+            Workflow URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           to: 'sneha.dhande@amla.io'
-          content_type: text/plain
